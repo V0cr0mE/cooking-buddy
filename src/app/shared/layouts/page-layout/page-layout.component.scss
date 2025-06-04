@@ -1,0 +1,24 @@
+/* Toolbar : couleur primaire, texte blanc par défaut */
+.app-toolbar {
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+
+  .logo {
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+
+  .spacer {
+    flex: 1 1 auto;
+  }
+}
+
+/* Conteneur principal centré, max-width 1200px, padding */
+.content-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto; /* centre horizontalement */
+  padding: 16px;   /* marge interne autour du contenu */
+  box-sizing: border-box;
+}
