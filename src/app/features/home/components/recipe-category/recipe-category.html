@@ -1,0 +1,6 @@
+<mat-card class="recipe-category-card" (click)="onClick()" role="button">
+  <img mat-card-image [src]="category.strCategoryThumb" [alt]="category.strCategory" />
+  <mat-card-content>
+    <h3 class="category-name">{{ category.strCategory }}</h3>
+  </mat-card-content>
+</mat-card>

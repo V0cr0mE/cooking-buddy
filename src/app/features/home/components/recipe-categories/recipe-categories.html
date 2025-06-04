@@ -1,0 +1,37 @@
+<section class="categories-section">
+  <!-- Si on est en train de charger les catégories, on affiche un spinner centré -->
+
+
+  <!-- Sinon, on affiche la grille des catégories -->
+  <ng-template #showCategories>
+    <mat-grid-list cols="3" gutterSize="16px" rowHeight="160px">
+      <mat-grid-tile *ngFor="let cat of categories()" (click)="$event.stopPropagation()">
+        <app-recipe-category
+          [category]="cat"
+          (selectCategory)="onCategorySelected($event)">
+        </app-recipe-category>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </ng-template>
+
+  <mat-divider class="divider"></mat-divider>
+
+  <!-- Affichage des recettes pour la catégorie sélectionnée -->
+  <div *ngIf="selectedCategory() as catName">
+    <h2 class="recipes-title">Recettes pour la catégorie : « {{ catName }} »</h2>
+    <div class="recipes-grid">
+      <ng-container *ngIf="recipes$.value(); else loadingRecipes">
+        <mat-grid-list cols="4" gutterSize="16px" rowHeight="200px">
+          <mat-grid-tile *ngFor="let meal of recipes$.value()">
+            <app-recipe-card [recipe]="meal"></app-recipe-card>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </ng-container>
+      <ng-template #loadingRecipes>
+        <div class="spinner-container">
+          <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</section>

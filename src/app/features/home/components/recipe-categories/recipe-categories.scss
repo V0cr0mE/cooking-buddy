@@ -1,0 +1,28 @@
+.categories-section {
+  margin: 16px;
+
+  .spinner-container {
+    display: flex;
+    justify-content: center;
+    margin: 32px 0;
+  }
+
+  .divider {
+    margin: 24px 0;
+  }
+
+  .recipes-title {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+
+  .recipes-grid {
+    margin-top: 8px;
+    .spinner-container {
+      display: flex;
+      justify-content: center;
+      margin: 24px 0;
+    }
+  }
+}

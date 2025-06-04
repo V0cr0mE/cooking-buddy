@@ -1,0 +1,17 @@
+.recipe-category-card {
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+  &:hover {
+    transform: scale(1.03);
+  }
+  img {
+    height: 120px;
+    object-fit: cover;
+  }
+  .category-name {
+    text-align: center;
+    margin: 8px 0 0;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+}

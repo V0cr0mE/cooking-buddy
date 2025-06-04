@@ -1,9 +1,18 @@
-<p>home-page works!</p>
 <app-page-layout>
   <section class="home-section">
     <h1>Bienvenue sur CookingBuddy</h1>
     <p>Voici le contenu principal de la page d’accueil…</p>
-    <!-- etc. -->
+  </section>
+
+  <!-- catégorie de recettes -->
+  <app-recipe-categories></app-recipe-categories>
+
+  <!-- liste de cards -->
+  <section class="recipes-list">
+    <app-recipe-card
+      *ngFor="let recipe of recipes$.value()"
+      [recipe]="recipe">
+    </app-recipe-card>
   </section>
 </app-page-layout>
 
