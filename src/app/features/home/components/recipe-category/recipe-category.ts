@@ -19,9 +19,7 @@ export interface Category {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RecipeCategoryComponent {
-  /** La catégorie à afficher */
   @Input({ required: true }) category!: Category;
-  /** Événement émis lors du clic sur la catégorie (on renvoie le nom de la catégorie) */
   @Output() selectCategory = new EventEmitter<string>();
 
   onClick(): void {

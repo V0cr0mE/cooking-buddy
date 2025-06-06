@@ -54,7 +54,16 @@ export class RecipesService {
       params: () => ({ category: this.categoriesselected() }),
       // Define an async loader that retrieves data.
       // The resource calls this function every time the `params` value changes.
-      loader: ({ params }) =>   firstValueFrom(this.http.get<RecipeSummary[]>(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${params.category}`))
+      loader: ({ params }) =>   firstValueFrom(this.http.get<{meals : RecipeSummary[] | null}>(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${params.category}`)).then(response => {
+        // On vérifie si la réponse contient des recettes
+        if (response.meals) {
+          // Si oui, on retourne le tableau de recettes
+          return response.meals;
+        } else {
+          // Sinon, on retourne un tableau vide
+          return [];
+        }
+      })
     });
 
   constructor(private readonly http: HttpClient) {

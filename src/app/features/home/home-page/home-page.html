@@ -8,11 +8,8 @@
   <app-recipe-categories></app-recipe-categories>
 
   <!-- liste de cards -->
-  <section class="recipes-list">
-    <app-recipe-card
-      *ngFor="let recipe of recipes$.value()"
-      [recipe]="recipe">
+  <section class="recipes-list" *ngIf="recipes$.value()">
+    <app-recipe-card *ngFor="let recipe of recipes$.value()" [recipe]="recipe">
     </app-recipe-card>
   </section>
 </app-page-layout>
-

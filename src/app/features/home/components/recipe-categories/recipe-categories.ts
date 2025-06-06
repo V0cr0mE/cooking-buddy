@@ -7,7 +7,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { RecipeCategoryComponent, Category } from '../recipe-category/recipe-category';
 import { RecipeCardComponent, RecipeSummary } from '../recipe-card/recipe-card';
 import { RecipesService } from '../../../../core/services/recipes.service';
-import { signal } from '@angular/core';
+import { effect } from '@angular/core';
 
 @Component({
   selector: 'app-recipe-categories',
@@ -30,8 +30,6 @@ export class RecipeCategoriesComponent {
   categories = this.recipesService.categories;
   selectedCategory = this.recipesService.categoriesselected;
   recipes$ = this.recipesService.recipesResource;
-
-
 
 
   onCategorySelected(categoryName: string): void {
