@@ -18,7 +18,7 @@ import { effect } from '@angular/core';
     MatProgressSpinnerModule,
     MatDividerModule,
     RecipeCategoryComponent,
-    RecipeCardComponent
+    // RecipeCardComponent
   ],
   templateUrl: './recipe-categories.html',
   styleUrls: ['./recipe-categories.scss'],

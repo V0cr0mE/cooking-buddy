@@ -30,6 +30,17 @@ export interface RecipeSummary {
   strMealThumb: string;
 }
 
+export interface RecipeDetailed {
+  idMeal: string;
+  strMeal: string;
+  strMealThumb: string;
+  strCategory: string;
+  strArea: string;
+  strInstructions: string;
+  /** Les clés strIngredient1…20 et strMeasure1…20 */
+  [key: string]: any;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -40,6 +51,7 @@ export class RecipesService {
   //
   public readonly categories = signal<Category[]>([]);
   public readonly categoriesselected = signal<string | null>(null);
+  public readonly searchResults = signal<RecipeDetailed[] | null>(null);
 
   //
   // 2.2. Resource pour récupérer les recettes d’une catégorie donnée.
@@ -98,5 +110,20 @@ export class RecipesService {
 
   setCurrentCategory(categoryName: string | null): void {
     this.categoriesselected.set(categoryName);
+  }
+
+  /** Lance la requête search.php?s=… et met à jour searchResults */
+  searchRecipes(term: string): void {
+    if (!term) {
+      this.searchResults.set(null);
+      return;
+    }
+    firstValueFrom(
+      this.http.get<{ meals: RecipeDetailed[] | null }>(
+        `https://www.themealdb.com/api/json/v1/1/search.php?s=${term}`
+      )
+    ).then(res => {
+      this.searchResults.set(res.meals ?? []);
+    });
   }
 }

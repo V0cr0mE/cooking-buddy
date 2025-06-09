@@ -1,0 +1,17 @@
+<mat-card class="detailed-recipe-card">
+    <mat-card-header>
+        <mat-card-title>{{ recipe.strMeal }}</mat-card-title>
+        <mat-card-subtitle>
+            {{ recipe.strCategory }} - {{ recipe.strArea }}
+        </mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="recipe.strMealThumb" [alt]="recipe.strMeal" />
+    <mat-card-content>
+        <h4>Ingrédients</h4>
+        <mat-list>
+            <mat-list-item *ngFor="let i of getIngredients()">{{ i }}</mat-list-item>
+        </mat-list>
+        <h4>Instructions</h4>
+        <p>{{ recipe.strInstructions }}</p>
+    </mat-card-content>
+</mat-card>

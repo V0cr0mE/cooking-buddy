@@ -18,6 +18,5 @@ export interface RecipeSummary {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RecipeCardComponent {
-  /** La recette à afficher */
   @Input({ required: true }) recipe!: RecipeSummary;
 }

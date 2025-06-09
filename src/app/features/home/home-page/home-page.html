@@ -1,15 +1,28 @@
 <app-page-layout>
-  <section class="home-section">
-    <h1>Bienvenue sur CookingBuddy</h1>
-    <p>Voici le contenu principal de la page d’accueil…</p>
+  <!-- barre de recherche -->
+  <mat-form-field appearance="outline" class="search-field">
+    <mat-label>Rechercher une recette</mat-label>
+    <!-- on envoie tout l’événement, pas directement .target.value -->
+    <input matInput (input)="onSearch($event)" />
+  </mat-form-field>
+
+  <!-- si on a tapé quelque chose, on affiche les résultats searchResults -->
+  <section *ngIf="searchTerm()">
+    <ng-container *ngIf="searchResults() && searchResults()?.length; else noResults">
+      <app-detailed-recipe-card *ngFor="let r of searchResults()" [recipe]="r">
+      </app-detailed-recipe-card>
+    </ng-container>
+    <ng-template #noResults>
+      <p>Aucune recette trouvée pour « {{ searchTerm() || '' }} ».</p>
+    </ng-template>
   </section>
 
-  <!-- catégorie de recettes -->
-  <app-recipe-categories></app-recipe-categories>
-
-  <!-- liste de cards -->
-  <section class="recipes-list" *ngIf="recipes$.value()">
-    <app-recipe-card *ngFor="let recipe of recipes$.value()" [recipe]="recipe">
-    </app-recipe-card>
+  <!-- sinon on remet l’affichage par défaut -->
+  <section *ngIf="!searchTerm()">
+    <app-recipe-categories></app-recipe-categories>
+    <section class="recipes-list" *ngIf="recipes$.value()?.length">
+      <app-recipe-card *ngFor="let recipe of recipes$.value()!" [recipe]="recipe">
+      </app-recipe-card>
+    </section>
   </section>
 </app-page-layout>
