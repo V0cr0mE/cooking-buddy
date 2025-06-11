@@ -1,9 +1,9 @@
 import { Component, effect, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PageLayoutComponent } from '../../shared/layouts/page-layout/page-layout.component';
-import { FavoritesService } from '../../core/services/favorites.service';
-import { RecipesService, RecipeDetailed } from '../../core/services/recipes.service';
-import { DetailedRecipeCardComponent } from '../home/components/DetailedRecipeCard/DetailedRecipeCard';
+import { PageLayoutComponent } from '../../../shared/layouts/page-layout/page-layout.component';
+import { FavoritesService } from '../../../core/services/favorites.service';
+import { RecipesService, RecipeDetailed } from '../../../core/services/recipes.service';
+import { DetailedRecipeCardComponent } from '../../home/components/DetailedRecipeCard/DetailedRecipeCard';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
