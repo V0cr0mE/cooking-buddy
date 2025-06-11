@@ -2,7 +2,10 @@
   <ng-container *ngIf="recipeResource.value() as recipe; else loading">
     <header class="recipe-header">
       <h1>{{ recipe.strMeal }}</h1>
-      <p>{{ recipe.strCategory }} - {{ recipe.strArea }}</p>
+      <p>
+        {{ recipe.strCategory }} - {{ recipe.strArea }}
+        <span class="diet-badge">{{ recipe | dietDetector }}</span>
+      </p>
       <a *ngIf="recipe['strSource']" [href]="recipe['strSource']" target="_blank">Source</a>
     </header>
 

@@ -7,6 +7,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { YtHoverPlayDirective } from '../../../shared/directives/yt-hover-play.directive';
+import { DietDetectorPipe } from '../../../shared/pipes/diet-detector.pipe';
 
 @Component({
   selector: 'app-recipe-page',
@@ -16,7 +17,8 @@ import { YtHoverPlayDirective } from '../../../shared/directives/yt-hover-play.d
     PageLayoutComponent,
     MatCardModule,
     MatListModule,
-    YtHoverPlayDirective
+    YtHoverPlayDirective,
+    DietDetectorPipe
   ],
   templateUrl: './recipe-page.html',
   styleUrl: './recipe-page.scss'
