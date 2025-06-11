@@ -3,9 +3,9 @@
   <mat-card-content>
     <h4 class="recipe-title">{{ recipe.strMeal }}</h4>
   </mat-card-content>
-  <!-- Si on veut ajouter un bouton "Voir plus", on peut décommenter :
   <mat-card-actions>
-    <button mat-button color="primary">Voir la fiche</button>
+    <button mat-icon-button color="warn" (click)="toggleFavorite($event)" aria-label="Ajouter aux favoris">
+      <mat-icon>{{ isFavorite() ? 'favorite' : 'favorite_border' }}</mat-icon>
+    </button>
   </mat-card-actions>
-  -->
 </mat-card>
