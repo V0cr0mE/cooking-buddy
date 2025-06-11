@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy, inject, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -25,9 +25,10 @@ export class RecipeCardComponent {
 
   private favoritesService = inject(FavoritesService);
 
-  isFavorite(): boolean {
-    return this.favoritesService.isFavorite(this.recipe.idMeal);
-  }
+  /** Réaction automatique au changement des favoris */
+  isFavorite = computed(() =>
+    this.favoritesService.isFavorite(this.recipe.idMeal)
+  );
 
   toggleFavorite(event: Event): void {
     event.preventDefault();
