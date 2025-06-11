@@ -53,6 +53,22 @@ export class RecipesService {
   public readonly categoriesselected = signal<string | null>(null);
   public readonly searchResults = signal<RecipeDetailed[] | null>(null);
 
+  /** Signal pour l'identifiant de la recette sélectionnée */
+  public readonly currentRecipeId = signal<string | null>(null);
+
+  /** Resource pour récupérer le détail d'une recette */
+  public readonly recipeResource = resource({
+    params: () => ({ id: this.currentRecipeId() }),
+    loader: ({ params }) => {
+      if (!params.id) return Promise.resolve(null);
+      return firstValueFrom(
+        this.http.get<{ meals: RecipeDetailed[] | null }>(
+          `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${params.id}`
+        )
+      ).then(res => (res.meals ? res.meals[0] : null));
+    }
+  });
+
   //
   // 2.2. Resource pour récupérer les recettes d’une catégorie donnée.
   //      On passe en générique <string, RecipeSummary[]> :
@@ -110,6 +126,11 @@ export class RecipesService {
 
   setCurrentCategory(categoryName: string | null): void {
     this.categoriesselected.set(categoryName);
+  }
+
+  /** Définit l'identifiant de la recette à afficher */
+  setCurrentRecipeId(id: string | null): void {
+    this.currentRecipeId.set(id);
   }
 
   /** Lance la requête search.php?s=… et met à jour searchResults */

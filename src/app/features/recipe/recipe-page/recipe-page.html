@@ -1,0 +1,29 @@
+<app-page-layout>
+  <ng-container *ngIf="recipeResource.value() as recipe; else loading">
+    <header class="recipe-header">
+      <h1>{{ recipe.strMeal }}</h1>
+      <p>{{ recipe.strCategory }} - {{ recipe.strArea }}</p>
+      <a *ngIf="recipe.strSource" [href]="recipe.strSource" target="_blank">Source</a>
+    </header>
+
+    <mat-card>
+      <img mat-card-image [src]="recipe.strMealThumb" [alt]="recipe.strMeal" />
+      <mat-card-content>
+        <h2>Ingrédients</h2>
+        <mat-list>
+          <mat-list-item *ngFor="let i of getIngredients(recipe)">{{ i }}</mat-list-item>
+        </mat-list>
+
+        <div class="video" *ngIf="recipe.strYoutube">
+          <a [href]="recipe.strYoutube" target="_blank">Voir la vidéo</a>
+        </div>
+
+        <h2>Instructions</h2>
+        <p>{{ recipe.strInstructions }}</p>
+      </mat-card-content>
+    </mat-card>
+  </ng-container>
+  <ng-template #loading>
+    <p>Chargement...</p>
+  </ng-template>
+</app-page-layout>

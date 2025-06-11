@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { RecipeDetailed } from '../../../../core/services/recipes.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
     selector: 'app-detailed-recipe-card',
     standalone: true,
-    imports: [CommonModule, MatCardModule, MatListModule],
+    imports: [CommonModule, MatCardModule, MatListModule, RouterModule],
     templateUrl: './DetailedRecipeCard.html',
     styleUrls: ['./DetailedRecipeCard.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
