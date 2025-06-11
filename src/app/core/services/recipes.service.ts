@@ -126,4 +126,16 @@ export class RecipesService {
       this.searchResults.set(res.meals ?? []);
     });
   }
+
+  /**
+   * Fetch a single recipe by its identifier.
+   * Endpoint used: https://www.themealdb.com/api/json/v1/1/lookup.php?i={ID}
+   */
+  getRecipeById(id: string): Promise<RecipeDetailed | null> {
+    return firstValueFrom(
+      this.http.get<{ meals: RecipeDetailed[] | null }>(
+        `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`
+      )
+    ).then(res => res.meals ? res.meals[0] : null);
+  }
 }
