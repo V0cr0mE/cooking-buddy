@@ -15,7 +15,15 @@
         </mat-list>
 
         <div class="video" *ngIf="recipe['strYoutube']">
-          <a [href]="recipe['strYoutube']" target="_blank">Voir la vidéo</a>
+          <iframe
+            width="560"
+            height="315"
+            [src]="getYoutubeUrl(recipe)"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            appYTHoverPlay>
+          </iframe>
         </div>
 
         <h2>Instructions</h2>
