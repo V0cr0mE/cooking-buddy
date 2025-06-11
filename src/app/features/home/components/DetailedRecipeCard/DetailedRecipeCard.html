@@ -1,4 +1,4 @@
-<mat-card class="detailed-recipe-card">
+<mat-card class="detailed-recipe-card" [routerLink]="['/recipe', recipe.idMeal]">
     <mat-card-header>
         <mat-card-title>{{ recipe.strMeal }}</mat-card-title>
         <mat-card-subtitle>
