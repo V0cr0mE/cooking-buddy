@@ -14,4 +14,9 @@
         <h4>Instructions</h4>
         <p>{{ recipe.strInstructions }}</p>
     </mat-card-content>
+    <mat-card-actions>
+        <button mat-icon-button color="warn" (click)="toggleFavorite($event)" aria-label="Ajouter aux favoris">
+            <mat-icon>{{ isFavorite() ? 'favorite' : 'favorite_border' }}</mat-icon>
+        </button>
+    </mat-card-actions>
 </mat-card>

@@ -1,0 +1,15 @@
+<app-page-layout>
+  <h2>Mes recettes favorites</h2>
+
+  <ng-container *ngIf="favoriteIds().length; else emptyList">
+    <mat-progress-spinner *ngIf="loading()" mode="indeterminate"></mat-progress-spinner>
+    <app-detailed-recipe-card
+      *ngFor="let recipe of recipes()"
+      [recipe]="recipe">
+    </app-detailed-recipe-card>
+  </ng-container>
+
+  <ng-template #emptyList>
+    <p>Aucune recette favorite pour le moment.</p>
+  </ng-template>
+</app-page-layout>
